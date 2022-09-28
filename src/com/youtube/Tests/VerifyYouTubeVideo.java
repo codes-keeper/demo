@@ -2,7 +2,7 @@ package com.youtube.Tests;
 
 import com.youtube.Pages.YouTubePage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -13,6 +13,7 @@ import java.time.Duration;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import org.testng.asserts.SoftAssert;
 
 public class VerifyYouTubeVideo {
     WebDriver driver;
@@ -25,9 +26,10 @@ public class VerifyYouTubeVideo {
     public void setUp(){
         String driverLocation = System.getProperty("user.dir");
 
-        System.setProperty("webdriver.chrome.driver", driverLocation+"/lib/chromedriver/chromedriver");
+        System.setProperty("webdriver.gecko.driver", driverLocation+"/lib/firefoxdriver/geckodriver");
 
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
+
         logger.info("Starting test execution..");
 
         driver.manage().window().maximize();
@@ -58,6 +60,9 @@ public class VerifyYouTubeVideo {
      */
     @Test
     public void verifyTrendingVideoTest() throws InterruptedException {
+
+        SoftAssert sa = new SoftAssert();
+
         logger.info("Starting Test : verifyTrendingVideoTest");
         YouTubePage you_tube_page = PageFactory.initElements(driver, YouTubePage.class);
 
@@ -77,9 +82,9 @@ public class VerifyYouTubeVideo {
         Assert.assertTrue(url.equalsIgnoreCase("https://www.youtube.com/feed/explore"));
         logger.info("\"Explore\" icon in left panel clicked successfully!");
 
-        String titleOfSecondVideoInList = you_tube_page.getTitleFromTrendingVideosListByIndex(0);
+        String titleOfSecondVideoInList = you_tube_page.getTitleFromTrendingVideosListByIndex(1);
         logger.info("Title of second video from Trending Videos list is :  " + titleOfSecondVideoInList);
-        you_tube_page.clickTrendingVideoByIndex(0);
+        you_tube_page.clickTrendingVideoByIndex(1);
         String playingVideoTitle = you_tube_page.getCurrentlyPlayingVideoTitle();
         logger.info("Title of currently playing video is : "+playingVideoTitle);
 
@@ -96,7 +101,7 @@ public class VerifyYouTubeVideo {
         }
         String titleFirstVideo = you_tube_page.getTitleOfFirstSearchedVideos();
         logger.info("Title of first video from searched Videos list is :  " + titleFirstVideo);
-        Assert.assertTrue(titleOfSecondVideoInList.equalsIgnoreCase(titleFirstVideo),
+        sa.assertEquals(titleOfSecondVideoInList.equalsIgnoreCase(titleFirstVideo),
                 "Title of first search result video did not match searched text : "+titleFirstVideo + " and "+titleOfSecondVideoInList);
 
         you_tube_page.clickFirstVideoInSerachResultsList();
@@ -109,6 +114,8 @@ public class VerifyYouTubeVideo {
         Assert.assertTrue(url.equalsIgnoreCase(searched_video_url),
                 "URL of trending video and URL of search top result video did not match:" + url + " and " + searched_video_url);
         logger.info("Test execution completed!");
+
+        sa.assertAll();
     }
 
 }

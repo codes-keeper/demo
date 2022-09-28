@@ -14,7 +14,7 @@ import org.apache.log4j.LogManager;
 
 /**
  * All locators of YouTube web page and methods to access these elements are avaiable in this page model class.
-*/
+ */
 public class YouTubePage {
     WebDriver driver;
     private WebDriverWait wait60;
@@ -42,9 +42,6 @@ public class YouTubePage {
     @FindBy(xpath = "//*[@id='button']//*[@id='text']")
     WebElement icon_filters;
 
-    @FindBy(xpath = "//*[@id='logo-icon']")
-    WebElement icon_youtube_logo;
-    
     @FindBy(xpath = "//ytd-two-column-search-results-renderer[1]//ytd-section-list-renderer[1]//ytd-item-section-renderer[1]/div[3]/ytd-video-renderer[1]/div[1]/div[1]/div[1]/div[1]/h3[1]/a[1]/yt-formatted-string[1]")
     WebElement searchVideoFirst;
 
@@ -112,11 +109,10 @@ public class YouTubePage {
         return searchVideoFirst.getText().trim();
     }
 
-    public void clickFirstVideoInSerachResultsList() throws InterruptedException {
+    public void clickFirstVideoInSerachResultsList() {
         logger.info("Clicking first video from \"Search Results \" list to play the video..");
         executor.executeScript("arguments[0].click();", searchVideoFirst);
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(90));
-        Thread.sleep(10000);
     }
 
 
