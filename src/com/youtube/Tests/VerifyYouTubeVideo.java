@@ -18,6 +18,9 @@ public class VerifyYouTubeVideo {
     WebDriver driver;
     Logger logger = LogManager.getLogger(VerifyYouTubeVideo.class);
 
+    /**
+     * setUp() methopd initializes web driver and opens the url before every test.
+     */
     @BeforeMethod
     public void setUp(){
         String driverLocation = System.getProperty("user.dir");
@@ -35,12 +38,22 @@ public class VerifyYouTubeVideo {
         logger.info("Opening url https://www.youtube.com");
     }
 
+    /**
+     * tearDown() method executes after every test and closes the browser window.
+     */
     @AfterMethod
     public void tearDown(){
         logger.info("Closing Browser...");
         driver.quit();
     }
 
+    /**
+     * verifyTrendingVideoTest() is the test method that clicks "explore" icon in left panel,
+     * Asserts "Tending videos" list is displayed, get the text of second video in "Trending Videos" list,
+     * then clicks the second video in Trending videos list to play the video,
+     * verifies that the playing video title matches with the one in Trending videos list,
+     * and finally captures the url of the video that is playing.
+     */
     @Test
     public void verifyTrendingVideoTest() {
         logger.info("Starting Test : verifyTrendingVideoTest");

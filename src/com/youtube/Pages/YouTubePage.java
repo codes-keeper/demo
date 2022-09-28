@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 
 /**
- * All locators of YouTube web page.
+ * All locators of YouTube web page and methods to access these elements are avaiable in this page model class.
 */
 public class YouTubePage {
     WebDriver driver;

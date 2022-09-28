@@ -1,0 +1,19 @@
+[main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Starting test execution..
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Browser Maximized
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Opening url https://www.youtube.com
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Starting Test : verifyTrendingVideoTest
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Page successfully loaded and title was YouTube
+  [main] INFO  com.youtube.Pages.YouTubePage  - Clicking "Explore" icon
+  [main] INFO  com.youtube.Pages.YouTubePage  - Getting current page url from browser..
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Page url: https://www.youtube.com/feed/explore
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - "Explore" icon in left panel clicked successfully!
+  [main] INFO  com.youtube.Pages.YouTubePage  - Get Title of second video under "Trending Videos".. 
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Title second video from Trending Videos list is :  Beating 5 Scam Arcade Games with Science
+  [main] INFO  com.youtube.Pages.YouTubePage  - Clicking Second Video under "trending Videos" section..
+  [main] INFO  com.youtube.Pages.YouTubePage  - Get Title of currently playing trending video..
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Title of currently playing video is : Beating 5 Scam Arcade Games with Science
+  [main] INFO  com.youtube.Pages.YouTubePage  - Getting current page url from browser..
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - URL of currently playing trending video is :  https://www.youtube.com/watch?v=Rsxao9ptdmI
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Test execution completed!
+  [main] INFO  com.youtube.Tests.VerifyYouTubeVideo  - Closing Browser...
+  
