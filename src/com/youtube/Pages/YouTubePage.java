@@ -70,7 +70,7 @@ public class YouTubePage {
     }
 
     public String getCurrentlyPlayingVideoTitle() throws InterruptedException {
-        Thread.sleep(10000);
+        Thread.sleep(15000);
         logger.info("Get Title of video or reel playing");
         if (playing_video_title.isDisplayed()){
             logger.info("Get Title of currently playing trending video..");
@@ -114,6 +114,5 @@ public class YouTubePage {
         executor.executeScript("arguments[0].click();", searchVideoFirst);
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(90));
     }
-
 
 }

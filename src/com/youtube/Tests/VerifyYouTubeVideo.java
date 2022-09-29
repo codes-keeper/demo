@@ -10,17 +10,25 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.testng.asserts.SoftAssert;
 
 public class VerifyYouTubeVideo {
-    WebDriver driver;
+
+    static {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
+        System.setProperty("current.date.time", dateFormat.format(new Date()));
+    }
     Logger logger = LogManager.getLogger(VerifyYouTubeVideo.class);
 
+    WebDriver driver;
+
     /**
-     * setUp() methopd initializes web driver and opens the url before every test.
+     * setUp() method initializes web driver and opens the url before every test.
      */
     @BeforeMethod
     public void setUp(){
@@ -101,7 +109,7 @@ public class VerifyYouTubeVideo {
         }
         String titleFirstVideo = you_tube_page.getTitleOfFirstSearchedVideos();
         logger.info("Title of first video from searched Videos list is :  " + titleFirstVideo);
-        sa.assertEquals(titleOfSecondVideoInList.equalsIgnoreCase(titleFirstVideo),
+        sa.assertTrue(titleOfSecondVideoInList.equalsIgnoreCase(titleFirstVideo),
                 "Title of first search result video did not match searched text : "+titleFirstVideo + " and "+titleOfSecondVideoInList);
 
         you_tube_page.clickFirstVideoInSerachResultsList();
